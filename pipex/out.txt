@@ -1,0 +1,8 @@
+ft_split.c
+ft_strjoin.c
+ft_strncmp.c
+ft_strncmp.o
+main.c
+process.c
+process.o
+utils.c
