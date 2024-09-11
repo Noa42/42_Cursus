@@ -1,4 +1,4 @@
-# 42 Cursus
+# 🚀42 Cursus
 
 Hello! :D  
 This is my 42 Cursus repo. Here you can find how I attempted the projects from 42 Málaga.  
