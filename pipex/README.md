@@ -9,6 +9,7 @@ So we must manage the file descriptors, create the pipe between them and execute
 
 ## Topics & Learnings
 * Processes, parent and child processes and communication between them
+* Processes creating and handling funtions suh as fork, dup, dup2, wait, getpid etc.
 * Pipes working and managing
 * Deep file descriptor managing
 * Parsing
