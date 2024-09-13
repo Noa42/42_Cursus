@@ -8,9 +8,9 @@ able to read from a different fd per call without losing the reading thread of e
 * Not allowed: lseek(), global variables.
 
 ## Topics & Learnings
-+ file descriptors managing
-+ read and write functions
-+ file permissions
-+ standard input, standar output and standard error
-+ buffer and buffer size managing
-+ static variables
++ File descriptors managing
++ Read and write functions
++ File permissions
++ Standard input, standar output and standard error
++ Buffer and buffer size managing
++ Static variables
