@@ -1,4 +1,4 @@
-# GET NEXT LINE
+# GET NEXT LINE 🚀
 
 In this project we must create a function called get next line that takes a file descriptor and returns the string of the next line (until the next '/n') from where the file descriptor was before.
 In a loop it must return the entire content from a file descriptor line by line. The prototype must be char *get_next_line(int fd). If must return NUll if there is nothing else to read or an error ocurred.
