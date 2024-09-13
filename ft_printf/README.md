@@ -17,5 +17,5 @@ Our function must implement the following conversions:
 ## Topics & Learnings
 + variadic functions
 + va_start, va_arg, va_copy, va_end and and multiple aguments managing
-+ different variables types and conversion between them
++ different variables types casting between them
 + hexadecimal base and memory locations
