@@ -6,7 +6,7 @@
 /*   By: achacon- <	achacon-@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 01:35:19 by achacon-          #+#    #+#             */
-/*   Updated: 2024/09/30 03:26:26 by achacon-         ###   ########.fr       */
+/*   Updated: 2024/10/02 01:44:13 by achacon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,14 @@ typedef struct s_fork
 
 typedef struct s_data
 {
+	long start_time;
 	int	number_of_philos;
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
 	int	number_of_meals;
 	pthread_mutex_t	mut_apocalypse;
-	t_philo	*array_philos;
+	t_philo	**array_philos;
 	t_fork	*array_forks;
 	int	apocalypse;
 }	t_data;
