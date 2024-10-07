@@ -12,31 +12,20 @@
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+void	one_philo_case(char **argv)
 {
-	t_data	data;
+	long	start_time;
+	int		time_to_die;
 
-	if (argc != 5 && argc != 6)
+	time_to_die = ft_atoi(argv[2]);
+	start_time = present_time(0);
+	printf("At time %ld ms: Philosopher 1 has taken their left fork\n",
+		present_time(start_time));
+	while (1)
 	{
-		printf("Error: Wrong number of arguments\n");
-		return (1);
+		usleep(1);
+		if (present_time(start_time) > time_to_die)
+			break ;
 	}
-	if (ft_atoi(argv[1]) == 1)
-	{
-		one_philo_case(argv);
-		return (0);
-	}
-	if (take_args(&data, argc, argv) != 0)
-	{
-		printf("Error: Invalid arguments\n");
-		return (1);
-	}
-	if (init_data(&data) != 0)
-	{
-		free_traces(&data);
-		return (1);
-	}
-	join_threads(&data);
-	free_traces(&data);
-	return (0);
+	printf("At time %ld ms: Philosopher 1 died\n", present_time(start_time));
 }

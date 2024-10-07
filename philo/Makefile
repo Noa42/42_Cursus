@@ -2,7 +2,7 @@ NAME = philo
 
 USER = achacon-
 
-CFLAGS  = -Wall -Wextra -Werror -g -pthread
+CFLAGS  = -Wall -Wextra -Werror -g -pthread #-fsanitize=thread
 
 CC = gcc
 
@@ -10,7 +10,7 @@ SRC_DIR = src/
 
 OBJ_DIR = obj/
 
-SRC_FILES = main utils
+SRC_FILES = argos clean forks ft_atoi init one_philo routine utils main
 
 SRC_DIR = src/
 OBJ_DIR = obj/

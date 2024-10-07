@@ -12,52 +12,52 @@
 
 #include "philo.h"
 
-static	int	spaces(const char *str)
+long	present_time(long start_time)
 {
-	int	i;
+	struct timeval	time;
+	long			temp;
 
-	i = 0;
-	while ((str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
-	{
-		i++;
-	}
-	return (i);
+	gettimeofday(&time, NULL);
+	temp = (time.tv_sec * 1000 + time.tv_usec / 1000);
+	return (temp - start_time);
 }
 
-int	ft_atoi(const char *str)
+void	safe_print(t_philo *philo, char c)
 {
-	int	i;
-	int	result;
-	int	sign;
+	char	*s;
 
-	sign = 1;
-	i = spaces(str);
-	result = 0;
-	if (str[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	else if (str[i] == '+')
-	{
-		i++;
-	}
-	while ((str[i] >= '0' && str[i] <= '9'))
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (sign * result);
+	if (c == 'd')
+		s = "died";
+	else if (c == 'e')
+		s = "is eating";
+	else if (c == 't')
+		s = "is thinking";
+	else if (c == 's')
+		s = "is sleeping";
+	else if (c == 'l')
+		s = "has taken their left fork";
+	else if (c == 'r')
+		s = "has taken their right fork";
+	if (check_apocalypse(philo->data) == 1)
+		return ;
+	pthread_mutex_lock(&philo->data->mut_print);
+	printf("At time %ld ms: Philo: %i %s\n", \
+	present_time(philo->data->start_time), philo->id, s);
+	pthread_mutex_unlock(&philo->data->mut_print);
+	if (check_apocalypse(philo->data) == 1)
+		return ;
 }
-// void free_array (void *array, int size)
-// {
-// 	int i;
 
-// 	i = 0;
-// 	while (i < size)
-// 	{
-// 		free(array[i]);
-// 		i++;
-// 	}
-// 	free(array);
-// }
+void	update_last_meal(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->mut_last_meal);
+	philo->last_meal = present_time(philo->data->start_time);
+	pthread_mutex_unlock(&philo->mut_last_meal);
+}
+
+void	update_meals_eaten(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->mut_meals_eaten);
+	philo->meals_eaten++;
+	pthread_mutex_unlock(&philo->mut_meals_eaten);
+}

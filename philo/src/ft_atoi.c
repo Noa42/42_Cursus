@@ -1,42 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achacon- <	achacon-@student.42malaga.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:06:14 by achacon-          #+#    #+#             */
-/*   Updated: 2024/10/02 02:40:18 by achacon-         ###   ########.fr       */
+/*   Updated: 2024/08/13 02:29:18 by achacon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+static	int	spaces(const char *str)
 {
-	t_data	data;
+	int	i;
 
-	if (argc != 5 && argc != 6)
+	i = 0;
+	while ((str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
 	{
-		printf("Error: Wrong number of arguments\n");
-		return (1);
+		i++;
 	}
-	if (ft_atoi(argv[1]) == 1)
+	return (i);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	result;
+	int	sign;
+
+	sign = 1;
+	i = spaces(str);
+	result = 0;
+	if (str[i] == '-')
 	{
-		one_philo_case(argv);
-		return (0);
+		sign = -1;
+		i++;
 	}
-	if (take_args(&data, argc, argv) != 0)
+	else if (str[i] == '+')
 	{
-		printf("Error: Invalid arguments\n");
-		return (1);
+		i++;
 	}
-	if (init_data(&data) != 0)
+	while ((str[i] >= '0' && str[i] <= '9'))
 	{
-		free_traces(&data);
-		return (1);
+		result = result * 10 + (str[i] - '0');
+		i++;
 	}
-	join_threads(&data);
-	free_traces(&data);
-	return (0);
+	return (sign * result);
 }
