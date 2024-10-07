@@ -23,3 +23,5 @@ library and all functions of the MiniLibX or the MLX42
 * Windows, images and textures managing
 * Events and graphic response handling
 * Playabe loop
+
+  WARNING: The MLX42 is added as a submodule so you must run $git submodule update --init --recursive (this clone the submodule from the original repository) and then $make
